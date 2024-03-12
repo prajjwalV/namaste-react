@@ -5,7 +5,8 @@
 .header {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    border: 3px solid black;
+    border-radius: 15px;
 }
 .nav-items{
     font-size: large;
@@ -22,8 +23,9 @@
 .restro-card {
     width: 180px;
     /* height: 290px; */
-    padding: 5px;
-    margin: 10px;
+    padding: 25px;
+    margin: 50px;
+    border-radius: 15px;
     /* display: flex; */
 }
 
@@ -40,6 +42,7 @@
     margin: 5px;
     width: 95%;
     height: 150px;
+    border-radius: 15px;
 }
 .detail {
     margin:5px;
@@ -47,6 +50,7 @@
 .restro-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .name {
@@ -65,4 +69,44 @@
 .filter-btn{
     /* margin: 300 px; */
     cursor: pointer;
+    border-radius: 15px;
+}
+.shimmer-restro-card{
+    width: 180px;
+    background-color: grey;
+    height: 250px;
+    padding: 25px;
+    margin: 50px;
+    display: flex;
+    border-radius: 15px;
+}
+
+.shimmer-container {
+    /* width: 180px;
+    height: 290px;
+    padding: 5px;
+    margin: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:flex-start;
+}
+
+.search-container { 
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-input {
+    border-radius: 10px;
+    margin: 10px;
+    margin-right: 5px;
+}
+.search-btn{
+    border-radius: 10px;
+    margin: 10px;
+    margin-left: 2px;
+}
+.filter-serach-container{ 
+    display: flex;
+    flex-wrap: wrap;
 }

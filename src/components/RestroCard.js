@@ -2,6 +2,10 @@ import { CDN_URL } from "../utils/constants";
 const RestroCard = (props) => {
     const { cuisines, avgRating, costForTwo, areaName, cloudinaryImageId, name  } = props?.resData?.info;
     const { deliveryTime } = props?.resData?.info?.sla;
+    const nameLength = 16;
+    const cuisineLength = 26;
+    const cuisineStr = cuisines.join(', ')
+    let cuisineShort = cuisineStr.length > cuisineLength ? cuisineStr.substring(0, nameLength) + '...' : cuisineStr;
     return (
         <div className="restro-card" style = {{backgroundColor: "#f0f0f0"}}>
             <div className="card-logo-container">
@@ -11,14 +15,13 @@ const RestroCard = (props) => {
                 
             </div>
             <div className="card-title">
-            <h3 className="name"> {name}, </h3>
-            <p className="name"> {areaName} </p>
+            <h3 className="name"> {((name.length > 20) ? name.substring(0, nameLength) + '...' : name)}, </h3>
             </div>
 
-            <p className="detail"> {cuisines.join(', ')} </p>
-            <p className="detail"> {avgRating} stars </p>
-            <p className="detail"> {costForTwo} </p>
-            <p className="detail"> {deliveryTime} mins </p>
+            <p className="detail"> {cuisineShort} </p>
+            <p className="detail"> {avgRating} stars - {deliveryTime} mins </p>
+            {/* <p className="detail"> {costForTwo} </p> */}
+            <p className="name"> {areaName} </p>
         </div>
     )
  }
