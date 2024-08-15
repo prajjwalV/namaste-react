@@ -8,7 +8,15 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
-    useEffect(() => {swiggyApi();}
+    useEffect(() => {
+        // this timer interval will print every second and remains printing even after the component is unmounted
+        const timer = setInterval(()=>{
+            console.log('Namaste react');
+        }, 1000);
+        swiggyApi();
+        // this return will be called after the component is unmounted hence it will stop the timer 
+        return () => { clearInterval(timer);};
+    }
     ,[])
     const swiggyApi = async ()=> {
         console.log('in use effect ');
