@@ -2,6 +2,7 @@ import RestroCard from "./RestroCard";
 // import restroList from "../utils/restroList";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body = () => {
@@ -28,6 +29,11 @@ const Body = () => {
         // console.log(result[4]?.card?.card?.gridElements?.infoWithStyle.restaurants)
         setListOfRestaurants(result);
         setFilteredRestaurants(result);
+    }
+    const onlineStatus = useOnlineStatus();
+
+    if( !onlineStatus) {
+        return (<h1>Look's like you are offline. Please check your internet connection !!</h1>)
     }
 
     return listOfRestaurants.length === 0 ?  <Shimmer/> :(
