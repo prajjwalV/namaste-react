@@ -1,4 +1,4 @@
-import RestroCard from "./RestroCard";
+import RestroCard, { withPromotedLabel } from "./RestroCard";
 // import restroList from "../utils/restroList";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -11,20 +11,21 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
     useEffect(() => {
         // this timer interval will print every second and remains printing even after the component is unmounted
-        const timer = setInterval(()=>{
-            console.log('Namaste react');
-        }, 1000);
+        // const timer = setInterval(()=>{
+        //     console.log('Namaste react');
+        // }, 1000);
         swiggyApi();
         // this return will be called after the component is unmounted hence it will stop the timer 
-        return () => { clearInterval(timer);};
+        // return () => { clearInterval(timer);};
     }
     ,[])
+    const RestaurantCardPromoted = withPromotedLabel(RestroCard);
     const swiggyApi = async ()=> {
-        console.log('in use effect ');
+        // console.log('in use effect ');
         const listRestro  = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6542&lng=77.2373&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
-        console.log(listRestro);
+        // console.log(listRestro);
         let result = await listRestro.json();
-        console.log(result.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+        // console.log(result.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         result = result.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
         // console.log(result[4]?.card?.card?.gridElements?.infoWithStyle.restaurants)
         setListOfRestaurants(result);
@@ -57,7 +58,10 @@ const Body = () => {
             </div>
             </div>
             <div className="restro-container">
-                { filteredRestaurants.map( restaurant => ( <RestroCard key = {restaurant.info.id} resData ={restaurant}/>))}
+                { filteredRestaurants.map( restaurant => (
+                    restaurant.info.avgRating < 4.2 ? <RestaurantCardPromoted  key = {restaurant.info.id} resData ={restaurant}/> : <RestroCard key = {restaurant.info.id} resData ={restaurant}/>
+                    // <RestroCard key = {restaurant.info.id} resData ={restaurant}/>
+                    ))}
                 
             </div>
         </div>

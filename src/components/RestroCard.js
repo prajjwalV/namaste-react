@@ -26,4 +26,19 @@ const RestroCard = (props) => {
     )
  }
 
+ // higher order components , it takes a function as an input and returns a function , these are pure functions because they 
+ // return the input function unchanged ,
+ // Here we did not change anything in the original restroCard but added a feature on top of it 
+ 
+ export const withPromotedLabel = (RestroCard) => {
+    return (props) => {
+        return (
+        <div>
+            <label>Promoted</label>
+            <RestroCard {...props}/>
+        </div>
+        )
+    }
+ }
+
  export default RestroCard;
