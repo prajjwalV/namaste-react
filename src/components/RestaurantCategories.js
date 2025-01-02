@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategories = ({ data }) => {
+const RestaurantCategories = ({ data, showItems, setShowIndex }) => {
   const { title, itemCards } = data;
-  const [showItems, setShowItems] = useState(false);
+  // const [showItems, setShowItems] = useState(false);
   const handleClick = () =>{
-    setShowItems(!showItems);
+    setShowIndex()
+    // setShowItems(!showItems);
   }
   return (
     <div>
